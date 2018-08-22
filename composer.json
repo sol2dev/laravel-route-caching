@@ -1,0 +1,25 @@
+{
+    "name": "sol2dev/laravel-route-caching",
+    "description": "laravel route caching",
+    "license": "MIT",
+    "type": "library",
+    "keywords": ["laravel", "route", "caching"],
+    "homepage": "https://github.com/sol2dev/laravel-route-caching",
+    "version": "master",
+    "authors": [
+        {
+            "name": "sol",
+            "email": "sol@templatemonster.me"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
