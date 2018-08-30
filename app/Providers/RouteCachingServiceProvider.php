@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use App\Services\RouteCachingService;
 use App\Services\RouteCachingInterface;
-use Api\v1\Middleware\RouteCaching;
+use App\Http\Middleware\RouteCaching;
 
-class RouteCachingServiceProvider
+/**
+ *
+ */
+class RouteCachingServiceProvider extends ServiceProvider
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\v1\Middleware;
+namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
@@ -16,7 +16,18 @@ class RouteCaching
 
     public function __construct(RouteCachingInterface $routeCachingApi)
     {
+        $this->setRouteCachingApi($routeCachingApi);
+    }
+
+    private function setRouteCachingApi(RouteCachingInterface $routeCachingApi)
+    {
         $this->routeCachingApi = $routeCachingApi;
+        return $this;
+    }
+
+    private function getRouteCachingApi()
+    {
+        return $this->routeCachingApi;
     }
 
     /**
@@ -30,6 +41,13 @@ class RouteCaching
      */
     public function handle($request, Closure $next, ...$guards)
     {
-        return $next($request);
+        return $this
+            ->getRouteCachingApi()
+            ->sure(
+                $request,
+                function () use ($next, $request) {
+                    return $next($request);
+                }
+            );
     }
 }
